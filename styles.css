@@ -1,0 +1,74 @@
+
+/*Custom Properties*/
+
+:root{
+    --feed-bg-color: #D9D9D9;
+}
+
+
+/*Header*/
+#header-container{
+    height: 5vw;
+}
+
+#app-title{
+    font-size: 48px;
+}
+
+#filter-search{
+    width: 50.417vw;
+    height: 3.385vw;
+}
+
+/*Main Area*/
+main{
+    height: inherit;
+}
+
+/*Left | User Info-----------------------*/
+/* 
+#user-info-container{
+    /* width: fit-content; 
+} */
+
+#user-bg{
+    height: 10.573vw;
+    background-color: black;
+}
+
+
+#user-pfp{
+    width: 8.438vw;
+    height: 8.438vw;
+    background-color: white;
+    border: 0.5rem solid black;
+    border-radius: 100%;
+    text-align: center;
+    margin: -5vw auto auto 1vw;
+}
+
+/*Right | Feed-----------------------*/
+
+#blog-crud-container{
+    background-color: var(--feed-bg-color);
+    width: 46.823vw;
+    height: fit-content;
+}
+
+input{
+    width: 40.885vw;
+    height: auto;
+}
+textarea{
+    width: 40.885vw;
+    height: 8.281vw;
+}
+
+
+.blog-item-template,
+.blog-item{
+    background-color: white;
+    width: 43.177vw;
+    height: 5.313vw;
+    list-style: none;
+}
