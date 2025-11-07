@@ -44,19 +44,28 @@
             <div id="main-right" class="col-md pt-md-3 d-flex flex-column align-items-start bg-warning-subtle">
                 <div id="blogs-crud-container" class="d-flex flex-column align-items-center">
                     <section id="create-blog-section" class="row-col-md pb-4 d-flex flex-column align-items-center">
-                        <form>
+                        <form id="create-blog-form">
                             <h2 class="text-center pt-md-3">New Post</h2>
+                            
                             <div class="row-col-md d-flex flex-column">
-                                <label for="create-blog-title">Title</label>
-                                <input id="create-blog-title" name="blog-title" type="text"
-                                    placeholder="Today, I ate a grilled Cheese..." />
+                                <div class="d-flex flex-row">
+                                    <label for="create-blog-title">Title</label>
+                                    <span class="input-error ps-3" id="title-error"></span>
+                                </div>
+                                
+                                <input required id="create-blog-title" name="blog-title" type="text"
+                                    placeholder="Today, I ate a grilled Cheese..." minlength="3" maxlength="125" pattern=".*[a-z A-Z]+.*[0-9]*"/>
                             </div>
                             <div class="row-col-md d-flex flex-column">
-                                <label for="create-blog-content">Content</label>
-                                <textarea id="create-blog-content" name="blog-content"
+                                <div class="d-flex flex-row mt-2">
+                                    <label for="create-blog-content">Content</label>
+                                    <span class="input-error ps-3" id="content-error"></span>
+                                </div>
+                                <textarea required id="create-blog-content" name="blog-content"
                                     placeholder="That grilled cheese changed my life, it was terrible. OTL"
-                                    maxlength="300"></textarea>
+                                    minlength="10" maxlength="300" ></textarea>
                             </div>
+                            <button id="create-blogBtn" class="mt-2" type="submit">Post</button>
                         </form>
                     </section>
                     <section id="blog-feed-section" class="row-col-md d-flex flex-column align-items-center">

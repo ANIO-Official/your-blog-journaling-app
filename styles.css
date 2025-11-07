@@ -15,6 +15,11 @@ body{
 h3{
     font-size: 36px;
 }
+/*Errors Styling*/
+.input-error{
+    color: var(--warning-color);
+    font-style: italic;
+}
 
 /*HEADER-----------------*/
 #header-container{
@@ -71,7 +76,7 @@ main{
 
 #blogs-crud-container{
     background-color: var(--feed-bg-color);
-    /* width: inherit; */
+     width: inherit; 
     height: fit-content;
 }
 #create-blog-section{
