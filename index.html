@@ -8,8 +8,6 @@
     <link rel="icon" href="assets/favicon.ico" />
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
-
-
     <!--Bootstrap CSS Library | CDN-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -19,9 +17,9 @@
 <body>
     <header>
         <div id="header-container" class="row bg-primary">
-            <div id="header-content-container" class="d-flex flex-row justify-content-between">
+            <div id="header-content-container" class="d-flex flex-row justify-content-between align-items-center py-3 py-md-0">
                 <p id="app-title" class="d-none d-md-inline ps-md-4">Your Blog</p>
-                <div id="filter-container">
+                <div id="filter-container" class="ms-3 ms-md-0 me-md-5">
                     <input id="filter-search" type="text" placeholder="Filter your feed!" />
                     <button id="filterBtn">Filter</button>
                 </div>
@@ -29,10 +27,9 @@
         </div>
     </header>
     <main>
-
         <div id="main-container" class="row bg-primary-subtle">
             <div id="main-left" class="col-md-4 bg-success-subtle">
-                <div id="user-info-container" class="pt-md-3 ps-md-4 bg-success">
+                <div id="user-info-container" class="pt-md-3 ms-md-4 bg-success">
                     <div id="user-bg"></div>
                     <div id="user-pfp"></div>
                     <div>
@@ -45,30 +42,35 @@
 
             </div>
             <div id="main-right" class="col-md pt-md-3 d-flex flex-column align-items-start bg-warning-subtle">
-                <div id="blogs-crud-container" class="bg-warning">
-                    <section id="create-blog-section" class="row-col-md">
-                        <h2 class="text-center">New Post</h2>
-                        <div class="row-col-md d-flex flex-column">
-                            <label for="create-blog-title">Title</label>
-                            <input id="create-blog-title" type="text" />
-                        </div>
-                        <div class="row-col-md d-flex flex-column">
-                            <label for="create-blog-content">Content</label>
-                            <textarea id="create-blog-content"></textarea>
-                        </div>
+                <div id="blogs-crud-container" class="d-flex flex-column align-items-center">
+                    <section id="create-blog-section" class="row-col-md pb-4 d-flex flex-column align-items-center">
+                        <form>
+                            <h2 class="text-center pt-md-3">New Post</h2>
+                            <div class="row-col-md d-flex flex-column">
+                                <label for="create-blog-title">Title</label>
+                                <input id="create-blog-title" name="blog-title" type="text"
+                                    placeholder="Today, I ate a grilled Cheese..." />
+                            </div>
+                            <div class="row-col-md d-flex flex-column">
+                                <label for="create-blog-content">Content</label>
+                                <textarea id="create-blog-content" name="blog-content"
+                                    placeholder="That grilled cheese changed my life, it was terrible. OTL"
+                                    maxlength="300"></textarea>
+                            </div>
+                        </form>
                     </section>
                     <section id="blog-feed-section" class="row-col-md d-flex flex-column align-items-center">
-                        <div id="feed-container" class="bg-danger">
+                        <div id="feed-container">
                             <h2 class="text-center pt-md-3">Feed</h2>
                             <ul id="feed-batch">
-                                <li class="blog-item-template">
+                                <li class="blog-item-template ps-md-3">
                                     <div class="blog-item-container d-flex flex-row justify-content-between">
                                         <div class="blog-item-title">
                                             <h3>Title</h3>
                                         </div>
                                         <div class="blog-itemBtns">
-                                            <button type="button">Edit</button>
-                                            <button type="button">Delete</button>
+                                            <button type="button" class="editBtn me-md-3">Edit</button>
+                                            <button type="button" class="deleteBtn me-md-3">Delete</button>
                                         </div>
                                     </div>
                                     <div class="blog-item-content">

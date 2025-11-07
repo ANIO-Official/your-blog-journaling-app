@@ -1,35 +1,55 @@
-
 /*Custom Properties*/
 
 :root{
     --feed-bg-color: #D9D9D9;
+    --warning-color: rgb(182, 8, 8);
+    --change-item-color: rgb(23, 134, 207);
+    --form-bg-color: #919191;
+    --border-roundy-50: 50px;
+}
+/*General Styling*/
+body{
+    width: inherit;
 }
 
+h3{
+    font-size: 36px;
+}
 
-/*Header*/
+/*HEADER-----------------*/
 #header-container{
-    height: 5vw;
+    min-height: 5vw;
+    max-height: 20vw;
 }
 
 #app-title{
     font-size: 48px;
 }
-
+/*Filter Elements*/
 #filter-search{
-    width: 50.417vw;
-    height: 3.385vw;
+    min-width: 14.46vw;
+    max-width: 50.417vw;
+    min-height: 1vw;
+    max-height: 3.385vw;
+    border-radius: var(--border-roundy-50);
+    padding: 1rem;
+}
+#filterBtn{
+    min-width: fit-content;
+    max-width: 6.927vw;
+    min-height: fit-content;
+    max-height: 3.385vw;
+    font-size: 1rem;
+    border-radius: var(--border-roundy-50);
 }
 
-/*Main Area*/
+/*MAIN-----------------*/
 main{
+    width: inherit;
     height: inherit;
 }
 
-/*Left | User Info-----------------------*/
-/* 
-#user-info-container{
-    /* width: fit-content; 
-} */
+/*Left | User Info---*/
 
 #user-bg{
     height: 10.573vw;
@@ -38,8 +58,8 @@ main{
 
 
 #user-pfp{
-    width: 8.438vw;
-    height: 8.438vw;
+    width: 140px;
+    height: 140px;
     background-color: white;
     border: 0.5rem solid black;
     border-radius: 100%;
@@ -47,12 +67,18 @@ main{
     margin: -5vw auto auto 1vw;
 }
 
-/*Right | Feed-----------------------*/
+/*Right | Feed---*/
 
-#blog-crud-container{
+#blogs-crud-container{
     background-color: var(--feed-bg-color);
-    width: 46.823vw;
+    /* width: inherit; */
     height: fit-content;
+}
+#create-blog-section{
+    background-color: var(--form-bg-color);
+    width: inherit;
+    height: fit-content;
+    color: white;
 }
 
 input{
@@ -64,11 +90,22 @@ textarea{
     height: 8.281vw;
 }
 
-
+/*Blog Item Styling---*/
 .blog-item-template,
 .blog-item{
     background-color: white;
     width: 43.177vw;
     height: 5.313vw;
     list-style: none;
+}
+
+.editBtn{
+    background-color: transparent;
+    color: var(--change-item-color);
+    border: none;
+}
+.deleteBtn{
+    background-color: transparent;
+    color: var(--warning-color);
+    border: none;
 }
