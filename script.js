@@ -139,6 +139,7 @@ function createFragment() {
     }
 
     //Attach document fragment to feedBatch <ul>--------------------------
+    feedBatch.innerHTML = '' //Clear feedBatch of any loaded data before showing new data
     feedBatch.appendChild(fragment)
 }
 
@@ -194,6 +195,10 @@ function getFeed() {
 }
 //Load the feed data.
 document.addEventListener('DOMContentLoaded', (event) => {
+    //Set login date
+    const userLogDate = document.getElementById('user-log-date')
+    userLogDate.innerText = new Date(Date.now())
+
     let feed = getFeed()//check local storage for a stored feed
     if (feed) {
         //Get & Update Array & Load Feed
