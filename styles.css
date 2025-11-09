@@ -100,10 +100,16 @@ textarea{
 .blog-item{
     background-color: white;
     width: 43.177vw;
-    height: 5.313vw;
+    min-height: 5.313vw;
+    max-height: fit-content;
     list-style: none;
 }
-
+.blog-item-title{
+    font-size: 2rem;
+}
+.blog-item-content{
+    font-size: 1rem;
+}
 .editBtn{
     background-color: transparent;
     color: var(--change-item-color);
@@ -113,4 +119,30 @@ textarea{
     background-color: transparent;
     color: var(--warning-color);
     border: none;
+}
+
+@media (max-width:1550px){
+    .blog-item{
+    width: 80vw;
+    }
+    #create-blog-title,
+    #create-blog-content{
+        width: 70vw;
+    }
+    .input-error{
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 412px){
+    .blog-item{
+    width: 80vw;
+    }
+    .blog-item-title{
+    font-size: 24px;
+    }
+    .blog-item-content{
+        font-size: 16px;
+    }
+
 }

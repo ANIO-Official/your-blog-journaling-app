@@ -54,7 +54,7 @@
                                 </div>
                                 
                                 <input required id="create-blog-title" name="blog-title" type="text"
-                                    placeholder="Today, I ate a grilled Cheese..." minlength="3" maxlength="125" pattern=".*[a-z A-Z]+.*[0-9]*"/>
+                                    placeholder="Today, I ate a grilled Cheese..." minlength="3" maxlength="36" pattern=".*[a-z A-Z]+.*[0-9]*"/>
                             </div>
                             <div class="row-col-md d-flex flex-column">
                                 <div class="d-flex flex-row mt-2">
@@ -71,15 +71,15 @@
                     <section id="blog-feed-section" class="row-col-md d-flex flex-column align-items-center">
                         <div id="feed-container">
                             <h2 class="text-center pt-md-3">Feed</h2>
-                            <ul id="feed-batch">
-                                <li class="blog-item-template ps-md-3" style="display: none;">
+                            <ul id="feed-batch" class="row-col-md m-0 p-0 d-flex flex-column justify-content-center align-items-center">
+                                <li class="blog-item-template row-col-md ps-3" style="display: none;">
                                     <div class="blog-item-container d-flex flex-row justify-content-between">
                                         <div class="blog-item-title-container">
                                             <h3 class="blog-item-title">Title</h3>
                                         </div>
-                                        <div class="blog-itemBtns">
-                                            <button type="button" class="editBtn me-md-3">Edit</button>
-                                            <button type="button" class="deleteBtn me-md-3">Delete</button>
+                                        <div class="blog-itemBtns row">
+                                            <button type="button" class="editBtn me-md-3 col-md">Edit</button>
+                                            <button type="button" class="deleteBtn me-md-3 col-md">Delete</button>
                                         </div>
                                     </div>
                                     <div class="blog-item-content-container">
