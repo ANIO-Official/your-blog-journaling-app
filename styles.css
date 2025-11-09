@@ -3,7 +3,9 @@
     /*Basics*/    
     --warning-color: linear-gradient(rgb(173, 0, 0), rgb(207, 53, 99));
     --your-blog-black: #2D2D2D;
+    --your-blog-gray: #635a5a;
     --border-roundy-50: 50px;
+    --border-basic: 5px solid  var(--your-blog-black);
 
     /*Default Theme*/
     --your-blog-pink: #F57B95;
@@ -65,7 +67,7 @@ h3, label {
 main {
     width: inherit;
     height: inherit;
-    background-color: var(--your-blog-lightpink);
+    background-color: white;
 }
 main h2{
     font-size: 2.5rem;
@@ -76,11 +78,14 @@ main h2{
 #user-info-container{
     background-color: white;
     height: 100%;
+    border: var(--border-basic);
+    border-radius: 50px;
 }
 
 #user-bg {
     height: 10.573vw;
-    background-color: var(--your-blog-black);
+    background-color: var(--your-blog-lightpink);
+    border-radius: 50px 50px 0 0;
 }
 
 #user-pfp {
@@ -103,14 +108,19 @@ main h2{
 #blogs-crud-container {
     width: 80%;
     height: fit-content;
-    background-color: var(--your-blog-black);
-    color: white;
+    background-color: white;
+    color: var(--your-blog-black);
+    border: 5px solid  var(--your-blog-black);
+    border-radius: 50px;
+    padding-bottom: 2vw;
 }
 
 #create-blog-section {
-    background-color: var(--your-blog-purple);
+    background-color: var(--your-blog-lightpink);
     width: 100%;
     height: fit-content;
+    border-radius: 50px 50px 0 0;
+    border: none;
 }
 #blog-feed-section h3, p{
     color: var(--your-blog-black);
@@ -146,6 +156,7 @@ textarea {
 }
 
 .blog-item-content {
+    padding-top: 1vw;
     font-size: 1rem;
 }
 .blog-itemBtns button{
@@ -174,18 +185,17 @@ textarea {
         margin: 0;
         padding: 0 0 0 3vw;
     }
-
-    #blogs-crud-container {
-        width: inherit;
-    }
-
+    #user-info-container,
+    #blogs-crud-container,
     #create-blog-section {
         width: inherit;
+        border: none;
+        border-radius: 0;
     }
-
     #user-bg {
         height: 30vw;
         background-color: var(--your-blog-black);
+        border-radius: 0;
     }
 
     #user-pfp {
