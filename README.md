@@ -24,21 +24,23 @@ The purpose of this project is to test my ability to manipulate the DOM, handle 
 
 ## My process
 Quick brief about process. Here are my steps/general steps:
- 1. Set up Semantic HTML for Web App structure
+ 1. Set up Semantic HTML for web app structure
 
   - Bullet Points
 
- 2. Create Responsive Layout using Bootstrap Grid and CSS
+ 2. Create responsive layout using Bootstrap Grid and CSS
 
   - Bullet Points
 
- 3. Added DOM Variables and Validity Conditional Checks
+ 3. Added DOM variables and validity conditional checks
 
- 4. Added Functions to Dynamically Create Blog Post upon Submission
+ 4. Added functions to dynamically Create Blog Post upon submission
 
- 5. Testing and Bug Fixing
+ 5. Added ability to Load stored blogs on document load.
+ 
+ 6. Testing and Bug Fixing
 
- 6. Styling Tweaks
+ 7. Styling Tweaks
 
 ### Built with
 - JavaScript
