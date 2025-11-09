@@ -58,11 +58,6 @@ feedBatch.addEventListener('click', (event) => {
     }
 
 })
-
-//Dynamically Add Posts to batch
-
-
-
 //Render Posts in Feed
 function renderFeed() {
 
@@ -122,11 +117,19 @@ function renderFeed() {
 createBlogForm.addEventListener('submit', (event) => {
     event.preventDefault()
     //Stop creation of blog when invalid, display error alert.
-    const validityCheck = !blogTitleInput.validity.valid && !blogContentInput.validity.valid
+    switch (true){
+        case !blogTitleInput.validity.valid:
+            console.log('Cannot Create Blog, Check title field.')
+            alert('Something is incorrect! Update highlighted field(s).(っ °Д °;)っ')
+            return
 
-    if (validityCheck) {
-        alert('Invalid Blog. Check & updated highlighted field(s).')
-        return
+        break;
+        case !blogContentInput.validity.valid:
+            console.log('Cannot Create Blog, Check title field.')
+            alert('Something is incorrect! Update highlighted field(s).(っ °Д °;)っ')
+            return
+        break;
+        default : 
     }
 
     //Create new blog with inputs if all valid
