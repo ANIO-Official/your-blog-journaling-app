@@ -18,6 +18,10 @@ const blogTitleError = document.querySelector('#title-error')
 const blogContentError = document.querySelector('#content-error')
 
 
+// Show Locally stored notes on Load
+
+
+
 //Blog Form Field Validity Checks----------------------------------
 blogTitleInput.addEventListener('input', (event) => {
     if (blogTitleInput.validity.patternMismatch) {
@@ -48,13 +52,34 @@ blogContentInput.addEventListener('input', (event) => {
 
 //Event Delegation for each post, on the ul feedBatch (#feed-batch) 
 feedBatch.addEventListener('click', (event) => {
+
+    //Edit Blog Item
     if (event.target.classList.contains('editBtn')) {
         //Open modal or repopulate form to edit 
     }
+
+    //Delete Blog Item
     if (event.target.classList.contains('deleteBtn')) {
         const blogItem = event.target.closest('li')
-        //Add a Removal from the local storage as well here.
-        blogItem.remove()
+        try{
+            const retrievedFeedData = localStorage.getItem('feedDisplayData') //Get local storage array
+            feedData = JSON.parse(retrievedFeedData) //Update the array with stored data
+        }
+        catch (e){
+            console.error('Error parsing blog feed data from local storage: ', e)
+            feedData = null
+        }
+        if (feedData){
+            function matchItem(item){
+                return item.title === blogItem.querySelector('.blog-item-title').textContent 
+            }
+            currentItem = feedData.find(matchItem) //Find a match Title in data to displayed blog Item's title
+            const indexOfItem = feedData.indexOf(currentItem) //Get index of item returned
+            feedData.splice(indexOfItem, 1)//Delete from data
+            console.log('Removed blog from feed.')
+            localStorage.setItem('feedDisplayData', JSON.stringify(feedData)) //Stringify array again for local storage
+        }
+        blogItem.remove() //Delete display & HTML
     }
 
 })
@@ -74,9 +99,17 @@ function renderFeed() {
 
     //Data Setup & Update--------------------------
     if (localStorage.getItem('feedDisplayData')) { //Returning user
-        const retrievedFeedData = localStorage.getItem('feedDisplayData') //Get local storage array
-        feedData = JSON.parse(retrievedFeedData) //Update the array with stored data
-        feedData.push(item) //Add new blogItem into the array
+        try{
+            const retrievedFeedData = localStorage.getItem('feedDisplayData') //Get local storage array
+            feedData = JSON.parse(retrievedFeedData) //Update the array with stored data
+        }
+        catch (e){
+            console.error('Error parsing blog feed data from local storage: ', e)
+            feedData = null
+        }
+        if (feedData){
+            feedData.push(item) //Add new blogItem into the array
+        }
     }
     else { //New users
         feedData.push(item)
