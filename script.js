@@ -18,10 +18,6 @@ const blogTitleError = document.querySelector('#title-error')
 const blogContentError = document.querySelector('#content-error')
 
 
-// Show Locally stored notes on Load
-
-
-
 //Blog Form Field Validity Checks----------------------------------
 blogTitleInput.addEventListener('input', (event) => {
     if (blogTitleInput.validity.patternMismatch) {
@@ -61,17 +57,17 @@ feedBatch.addEventListener('click', (event) => {
     //Delete Blog Item
     if (event.target.classList.contains('deleteBtn')) {
         const blogItem = event.target.closest('li')
-        try{
+        try {
             const retrievedFeedData = localStorage.getItem('feedDisplayData') //Get local storage array
             feedData = JSON.parse(retrievedFeedData) //Update the array with stored data
         }
-        catch (e){
+        catch (e) {
             console.error('Error parsing blog feed data from local storage: ', e)
             feedData = null
         }
-        if (feedData){
-            function matchItem(item){
-                return item.title === blogItem.querySelector('.blog-item-title').textContent 
+        if (feedData) {
+            function matchItem(item) {
+                return item.title === blogItem.querySelector('.blog-item-title').textContent
             }
             currentItem = feedData.find(matchItem) //Find a match Title in data to displayed blog Item's title
             const indexOfItem = feedData.indexOf(currentItem) //Get index of item returned
@@ -83,12 +79,8 @@ feedBatch.addEventListener('click', (event) => {
     }
 
 })
-//Render Posts in Feed
+//Render New Post in Feed | Only for creating new items, specifically for submission
 function renderFeed() {
-
-    //Create Fragment for batch--------------------------
-    const fragment = document.createDocumentFragment()
-
     //Blog item Object Setup--------------------------
     let item = {
         id: Math.floor(Math.random() * 1000),
@@ -99,21 +91,35 @@ function renderFeed() {
 
     //Data Setup & Update--------------------------
     if (localStorage.getItem('feedDisplayData')) { //Returning user
-        try{
-            const retrievedFeedData = localStorage.getItem('feedDisplayData') //Get local storage array
-            feedData = JSON.parse(retrievedFeedData) //Update the array with stored data
-        }
-        catch (e){
-            console.error('Error parsing blog feed data from local storage: ', e)
-            feedData = null
-        }
-        if (feedData){
+        parseFeedData()
+        if (feedData) {
             feedData.push(item) //Add new blogItem into the array
         }
     }
     else { //New users
         feedData.push(item)
     }
+
+    createFragment()
+}
+
+//Try Catch Parse feedData
+function parseFeedData(){
+    try {
+            const retrievedFeedData = localStorage.getItem('feedDisplayData') //Get local storage array
+            feedData = JSON.parse(retrievedFeedData) //Update the array with stored data
+        }
+        catch (e) {
+            console.error('Error parsing blog feed data from local storage: ', e)
+            feedData = null
+        }
+}
+
+//Create Document Fragment with All feedData items | Can be called by any to display.
+function createFragment() {
+    //Create Fragment for batch--------------------------
+    const fragment = document.createDocumentFragment()
+
 
     //Add Array to Fragment--------------------------
     for (let blog of feedData) {
@@ -150,19 +156,19 @@ function renderFeed() {
 createBlogForm.addEventListener('submit', (event) => {
     event.preventDefault()
     //Stop creation of blog when invalid, display error alert.
-    switch (true){
+    switch (true) {
         case !blogTitleInput.validity.valid:
             console.log('Cannot Create Blog, Check title field.')
             alert('Something is incorrect! Update highlighted field(s).(っ °Д °;)っ')
             return
 
-        break;
+            break;
         case !blogContentInput.validity.valid:
             console.log('Cannot Create Blog, Check title field.')
             alert('Something is incorrect! Update highlighted field(s).(っ °Д °;)っ')
             return
-        break;
-        default : 
+            break;
+        default:
     }
 
     //Create new blog with inputs if all valid
@@ -173,4 +179,27 @@ createBlogForm.addEventListener('submit', (event) => {
     createBlogForm.reset()
 
 
+})
+
+// Show Locally stored notes on Load----------------------------------
+
+//check window status & check for feed stored
+function getFeed() {
+    if (typeof window !== "undefined") {
+        if (localStorage.getItem('feedDisplayData')) {
+            return true
+        }
+    }
+    return false
+}
+//Load the feed data.
+document.addEventListener('DOMContentLoaded', (event) => {
+    let feed = getFeed()//check local storage for a stored feed
+    if (feed) {
+        //Get & Update Array & Load Feed
+        parseFeedData()
+        createFragment() //create feed
+        console.log('Loading feed') //check
+    }
+    else { console.error('Error loading feed') }
 })
