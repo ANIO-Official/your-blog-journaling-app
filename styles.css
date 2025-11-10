@@ -173,12 +173,26 @@ textarea {
     border-radius: var(--border-roundy-50);
     font-size: 2rem;
     font-weight: bold;
+    padding: 0.25vw 1vw;
 }
 #update-blogBtn:hover, #update-blogBtn:focus{
-    color: var(--your-blog-pink);
-    background-color: white;
+    color: var(--your-blog-black);
+    background-color: var(--your-blog-lightpink);
     cursor: pointer;
-    border: var(--border-basic);
+}
+#cancel-modal{
+    color: white;
+    background-color: var(--your-blog-purple);
+    border: none;
+    border-radius: var(--border-roundy-50);
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 0.25vw 1vw;
+}
+#cancel-modal:hover, #cancel-modal:focus{
+    color: var(--your-blog-black);
+    background-color: var(--your-blog-gray);
+    cursor: pointer;
 }
 
 /*DELETE---*/

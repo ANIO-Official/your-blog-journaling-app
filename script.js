@@ -9,6 +9,7 @@ const updateModal = document.getElementById('update-modal')
 const updateBlogForm = document.querySelector('#update-blog-form')
 const updateTitleInput = document.querySelector('#update-blog-title')
 const updateContentInput = document.querySelector('#update-blog-content')
+const cancelModal = document.querySelector('#cancel-modal')
 
 //Create Blog Form---------
 const createBlogForm = document.querySelector('#create-blog-form')
@@ -59,6 +60,7 @@ feedBatch.addEventListener('click', (event) => {
         const blogItem = event.target.closest('li')
         const blogTitle = blogItem.querySelector('.blog-item-title')//Get title display
         const blogContent = blogItem.querySelector('.blog-item-content') //Get content display
+        
         //Show & Populate Edit Modal-----------
         updateModal.style.display = 'block' //show modal  
         updateTitleInput.value = blogTitle.textContent
@@ -98,6 +100,12 @@ feedBatch.addEventListener('click', (event) => {
             localStorage.setItem('feedDisplayData', JSON.stringify(feedData)) //Stringify array again for local storage
             updateModal.style.display = 'none'
             alert('Updated Blog! ψ(｀∇´)ψ')
+            updateBlogForm.reset()
+        })
+
+        //Cancel Update
+        cancelModal.addEventListener('click', ()=>{
+            updateModal.style.display = 'none'
             updateBlogForm.reset()
         })
     }
