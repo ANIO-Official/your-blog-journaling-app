@@ -167,6 +167,21 @@ textarea {
     border-radius: 10px;
     padding: 0.5vw 1vw;
 }
+#create-blogBtn{
+    background: linear-gradient(var(--your-blog-lightpink), var(--your-blog-pink), var(--your-blog-yellow) );
+    color: var(--your-blog-black);
+    border: none;
+    font-size: 1.25rem;
+    padding: 0.5vw 1vw;
+    border-radius: var(--border-roundy-50);
+    filter: drop-shadow(0.2vw 0.2vw var(--your-blog-black));
+}
+#create-blogBtn:focus,
+#create-blogBtn:hover{
+    background: linear-gradient(var(--your-blog-pink), var(--your-blog-yellow));
+    color: white;
+    filter: drop-shadow(0.2vw 0.2vw var(--your-blog-purple));
+}
 
 /*VIEW/READ---*/
 #blog-feed-section h3,
@@ -177,7 +192,7 @@ p {
 /*UPDATE/EDIT--*/
 .editBtn {
     background-color: transparent;
-    color: var(--change-item-color);
+    color: var(--your-blog-black);
     border: none;
     font-size: 1.25rem;
 }
