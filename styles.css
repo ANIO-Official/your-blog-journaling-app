@@ -4,6 +4,7 @@
     --warning-color: linear-gradient(rgb(173, 0, 0), rgb(207, 53, 99));
     --your-blog-black: #141414;
     --your-blog-gray: #635a5a;
+    --your-blog-grayAlpha: #635a5a49;
     --border-roundy-50: 50px;
     --border-basic: 5px solid var(--your-blog-black);
 
@@ -31,9 +32,18 @@ label {
     font-size: 36px;
 }
 
+input:focus,
+textarea:focus{
+    background-color: var(--your-blog-lightpink);
+    border: 1rem thick red;
+}
+
+
 /*Errors Styling*/
 .input-error {
-    color: var(--warning-color);
+    background: var(--warning-color);
+    color: transparent;
+    background-clip: text;
     font-style: italic;
 }
 
@@ -111,12 +121,14 @@ main h2 {
     width: fit-content;
     border: none;
 }
-#usernameInput:active{
-    border: 0;
-}
+
 #user-about{
     width: 80%;
+    border-radius: 20px;
+    border: none;
+    padding: 1vw;
 }
+
 
 /*Right | Feed---*/
 
@@ -188,7 +200,7 @@ p {
     /* Purple w/ opacity */
 }
 
-.modal-content {
+#update-blog-form{
     background-color: var(--your-blog-yellow);
     color: var(--your-blog-black);
     margin: auto;
@@ -337,6 +349,12 @@ p {
         margin: -20vw auto auto 1vw;
     }
 
+    #update-blog-form h2,
+    #update-blog-form label{
+    font-size: 24px;
+    }
+    
+    
     .blog-item-top-container {
         margin-left: -4vw;
         padding-left: 1vw;

@@ -18,6 +18,7 @@ const createBlogForm = document.querySelector('#create-blog-form')
 const blogTitleInput = document.querySelector('#create-blog-title')
 const blogContentInput = document.querySelector('#create-blog-content')
 
+let usernameInput = document.getElementById('usernameInput')
 
 //Errors
 const blogTitleError = document.querySelector('#title-error')
@@ -219,12 +220,14 @@ createBlogForm.addEventListener('submit', (event) => {
         case !blogTitleInput.validity.valid:
             console.log('Cannot Create Blog, Check title field.')
             alert('Something is incorrect! Update highlighted field(s).(っ °Д °;)っ')
+            blogTitleInput.focus()
             return
 
             break;
         case !blogContentInput.validity.valid:
             console.log('Cannot Create Blog, Check title field.')
             alert('Something is incorrect! Update highlighted field(s).(っ °Д °;)っ')
+            blogContentInput.focus()
             return
             break;
         default:
@@ -251,11 +254,23 @@ function getFeed() {
     }
     return false
 }
+
+//Save Username
+usernameInput.addEventListener('blur', ()=>{
+    localStorage.setItem('username', usernameInput.value)
+    console.log(`Saved username: ${usernameInput.value}`)
+})
+
+
 //Load the feed data.
 document.addEventListener('DOMContentLoaded', (event) => {
     //Set login date
     const userLogDate = document.getElementById('user-log-date')
     userLogDate.innerText = new Date(Date.now())
+
+    //Set Username from previous session
+    usernameInput.value = localStorage.getItem('username')
+    console.log('Loading username')
 
     let feed = getFeed()//check local storage for a stored feed
     if (feed) {
