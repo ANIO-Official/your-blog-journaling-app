@@ -4,8 +4,13 @@ let feedBatch = document.getElementById('feed-batch')
 let blogItemTemplate = document.querySelector('.blog-item-template')
 let feedData = []
 
+//Update/Edit Modal & Form
+const updateModal = document.getElementById('update-modal')
+const updateBlogForm = document.querySelector('#update-blog-form')
+const updateTitleInput = document.querySelector('#update-blog-title')
+const updateContentInput = document.querySelector('#update-blog-content')
 
-//Form---------
+//Create Blog Form---------
 const createBlogForm = document.querySelector('#create-blog-form')
 
 //Inputs----------
@@ -51,7 +56,50 @@ feedBatch.addEventListener('click', (event) => {
 
     //Edit Blog Item
     if (event.target.classList.contains('editBtn')) {
-        //Open modal or repopulate form to edit 
+        const blogItem = event.target.closest('li')
+        const blogTitle = blogItem.querySelector('.blog-item-title')//Get title display
+        const blogContent = blogItem.querySelector('.blog-item-content') //Get content display
+        //Show & Populate Edit Modal-----------
+        updateModal.style.display = 'block' //show modal  
+        updateTitleInput.value = blogTitle.textContent
+        updateContentInput.value = blogContent.textContent
+
+        //Update/Edit Modal Upon Submission
+        updateBlogForm.addEventListener('submit', (event) => {
+            event.preventDefault()
+            //Stop creation of blog when invalid, display error alert.
+            switch (true) {
+                case !updateTitleInput.validity.valid:
+                    console.log('Cannot Create Blog, Check title field.')
+                    alert('Something is incorrect! Update highlighted field(s).(っ °Д °;)っ')
+                    return
+
+                    break;
+                case !updateContentInput.validity.valid:
+                    console.log('Cannot Create Blog, Check title field.')
+                    alert('Something is incorrect! Update highlighted field(s).(っ °Д °;)っ')
+                    return
+                    break;
+                default:
+            }
+
+            //Update the feedData array
+            function matchItem(item) {
+                return item.title === blogItem.querySelector('.blog-item-title').textContent
+            }
+            currentItem = feedData.find(matchItem) //Find a match Title in data to displayed blog Item's title
+            const indexOfItem = feedData.indexOf(currentItem) //Get index of item returned
+
+            //Change Data Content in Array for specific item
+            feedData[indexOfItem].title = updateTitleInput.value
+            feedData[indexOfItem].content = updateContentInput.value
+
+            createFragment()//Display updated data
+            localStorage.setItem('feedDisplayData', JSON.stringify(feedData)) //Stringify array again for local storage
+            updateModal.style.display = 'none'
+            alert('Updated Blog! ψ(｀∇´)ψ')
+            updateBlogForm.reset()
+        })
     }
 
     //Delete Blog Item
@@ -79,6 +127,8 @@ feedBatch.addEventListener('click', (event) => {
     }
 
 })
+
+
 //Render New Post in Feed | Only for creating new items, specifically for submission
 function renderFeed() {
     //Blog item Object Setup--------------------------
@@ -104,15 +154,15 @@ function renderFeed() {
 }
 
 //Try Catch Parse feedData
-function parseFeedData(){
+function parseFeedData() {
     try {
-            const retrievedFeedData = localStorage.getItem('feedDisplayData') //Get local storage array
-            feedData = JSON.parse(retrievedFeedData) //Update the array with stored data
-        }
-        catch (e) {
-            console.error('Error parsing blog feed data from local storage: ', e)
-            feedData = null
-        }
+        const retrievedFeedData = localStorage.getItem('feedDisplayData') //Get local storage array
+        feedData = JSON.parse(retrievedFeedData) //Update the array with stored data
+    }
+    catch (e) {
+        console.error('Error parsing blog feed data from local storage: ', e)
+        feedData = null
+    }
 }
 
 //Create Document Fragment with All feedData items | Can be called by any to display.

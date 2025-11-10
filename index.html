@@ -20,7 +20,8 @@
 <body>
     <header>
         <div id="header-container" class="row">
-            <div id="header-content-container" class="d-flex flex-row justify-content-between align-items-center py-3 py-md-0">
+            <div id="header-content-container"
+                class="d-flex flex-row justify-content-between align-items-center py-3 py-md-0">
                 <h1 id="app-title" class="d-none d-md-inline ps-md-4">Your Blog</h1>
                 <div id="filter-container" class="ms-3 ms-md-0 me-md-5">
                     <input id="filter-search" type="text" placeholder="Filter your feed!" />
@@ -49,15 +50,16 @@
                     <section id="create-blog-section" class="row-col-md pb-4 d-flex flex-column align-items-center">
                         <form id="create-blog-form" novalidate>
                             <h2 class="text-center pt-md-3">New Post</h2>
-                            
+
                             <div class="row-col-md d-flex flex-column">
                                 <div class="d-flex flex-row align-items-center">
                                     <label for="create-blog-title">Title</label>
                                     <span class="input-error ps-3" id="title-error"></span>
                                 </div>
-                                
+
                                 <input required id="create-blog-title" name="blog-title" type="text"
-                                    placeholder="Today, I ate a grilled Cheese..." minlength="3" maxlength="36" pattern=".*[a-z A-Z]+.*[0-9]*"/>
+                                    placeholder="Today, I ate a grilled Cheese..." minlength="3" maxlength="36"
+                                    pattern=".*[a-z A-Z]+.*[0-9]*" />
                             </div>
                             <div class="row-col-md d-flex flex-column">
                                 <div class="d-flex flex-row mt-2 align-items-center">
@@ -66,15 +68,42 @@
                                 </div>
                                 <textarea required id="create-blog-content" name="blog-content"
                                     placeholder="That grilled cheese changed my life, it was terrible. OTL"
-                                    minlength="10" maxlength="300" ></textarea>
+                                    minlength="10" maxlength="300"></textarea>
                             </div>
                             <button id="create-blogBtn" class="mt-2" type="submit">Post</button>
                         </form>
+                        <div id="update-modal" class="modal">
+                            <div class="modal-content">
+                                <form id="update-blog-form" novalidate>
+                                    <h2 class="text-center pt-md-3">Editing Blog ＼(ﾟｰﾟ＼)</h2>
+
+                                    <div class="row-col-md d-flex flex-column">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <label for="update-blog-title">Title</label>
+                                            <span class="input-error ps-3" id="title-edit-error"></span>
+                                        </div>
+
+                                        <input required id="update-blog-title" name="blog-title" type="text"
+                                            minlength="3" maxlength="36" pattern=".*[a-z A-Z]+.*[0-9]*" />
+                                    </div>
+                                    <div class="row-col-md d-flex flex-column">
+                                        <div class="d-flex flex-row mt-2 align-items-center">
+                                            <label for="update-blog-content">Content</label>
+                                            <span class="input-error ps-3" id="content-edit-error"></span>
+                                        </div>
+                                        <textarea required id="update-blog-content" name="blog-content" minlength="10"
+                                            maxlength="300"></textarea>
+                                    </div>
+                                    <button id="update-blogBtn" class="mt-2" type="submit">Update</button>
+                                </form>
+                            </div>
+                        </div>
                     </section>
                     <section id="blog-feed-section" class="row-col-md d-flex flex-column align-items-center">
                         <div id="feed-container">
                             <h2 class="text-center pt-md-3">Feed</h2>
-                            <ul id="feed-batch" class="row-col-md m-0 p-0 d-flex flex-column justify-content-center align-items-center">
+                            <ul id="feed-batch"
+                                class="row-col-md m-0 p-0 d-flex flex-column justify-content-center align-items-center">
                                 <li class="blog-item-template row-col-md ps-3" style="display: none;">
                                     <div class="blog-item-top-container d-flex flex-row justify-content-between">
                                         <div class="blog-item-title-container">
@@ -86,7 +115,8 @@
                                         </div>
                                     </div>
                                     <div class="blog-item-content-container">
-                                        <p class="blog-item-content">Preview Text Sentence that begins the journal entry...
+                                        <p class="blog-item-content">Preview Text Sentence that begins the journal
+                                            entry...
                                         </p>
                                     </div>
                                 </li>

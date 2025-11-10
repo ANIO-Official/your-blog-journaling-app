@@ -53,7 +53,13 @@ Quick brief about process. Here are my steps/general steps:
 
 - [MDN <template>](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/template) - I wanted to read more about templating to understand how to dynamically change the content per entry. As I read this document, I saw a wonderful example under 'Generating Table Rows'. It showed that I could use querySelector on parent elements! This has opened new doors for me. :'D
 
-- [MDN array.find()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) -I used this to help me locate the specific blog by title to delete from the array which would then be updated in local storage.
+- [MDN array.find()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) - I used this to help me locate the specific blog by title to delete from the array which would then be updated in local storage.
+
+- [MDN Date()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date) - Needed a reminder on how to set the date to appear more user friendly and not like a bunch og numbers haha. Used for showing last log date (now) / time of login.
+
+- [PX to VW Converter](https://cssunitconverter.vercel.app/px-to-vw) I made a basic wireframe in Figma but wanted to use a more reponsive sizing unit. This site helped me convert the mobile and base sizes easily. Highly recommend it. :>
+
+- [W3Schools Create a Modal](https://www.w3schools.com/howto/howto_css_modals.asp) - To help create the edit modal, I referenced this documentation and tested my code idea in their Tryit Editor first.
 
 ## Author
 
