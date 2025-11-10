@@ -15,6 +15,7 @@ The purpose of this project is to test my ability to manipulate the DOM, handle 
   - [How To Use](#how-to-use)
   - [My process](#my-process)
   - [Built with](#built-with)
+  - [Version Log](#version-log)
   - [Useful resources](#useful-resources)
 - [Author](#author)
 
@@ -94,6 +95,15 @@ Quick brief about process. Here are my steps/general steps:
 - BootStrap/Other CSS Libraries
 - Figma
 
+### Version Log
+
+11.09.2025
+
+I like how this project turned out but I would like to go back one day and improve some site capabilities.
+
+ 1. Allow changing of Profile picture and banner color or with an image file.
+ 2. Add a toggle for dark mode.
+ 3. Update styling for filter button.
 
 ### Useful resources
 
