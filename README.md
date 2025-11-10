@@ -97,13 +97,29 @@ Quick brief about process. Here are my steps/general steps:
 
 ### Version Log
 
-11.09.2025
+11.09.2025 Reflection: Improvements, Challenges, Solutions, Known Issues.
+----------------------------------------------------------------------------
 
-I like how this project turned out but I would like to go back one day and improve some site capabilities.
+I like how this project turned out but I would like to go back one day and improve some app capabilities.
 
  1. Allow changing of Profile picture and banner color or with an image file.
  2. Add a toggle for dark mode.
  3. Update styling for filter button.
+ 5. Improved Accessibility Features.
+
+I struggled a bit with understanding the filter method. But I took some time to practice and edit the examples in the browser TryIt windows of documentation until I could understand it. 
+
+Overall, this development process felt a lot smoother. I think it helped a lot that labs 1 and 2 of this module were very easy for me to translate into the SBA. This time around as well, I made 3 Figma projects ahead of time to wireframe my designs. It took a lot of guesswork out of the way. I was able to breakdown my wireframes into what HTML elements I needed, allowing me to focus on the JS more than anything. 
+
+My largest assets this project were my:
+
+ 1. Figma Wireframes
+ 2. MDN Documentation & W3Schools TryIt Editor for practice
+ 3. Pixel to VW conventor for easier resizable measurements.
+
+Known Issues:
+
+There is just one, there is a specific range of breakpoints between ~767px-1550px width where the header will suddenly have extra white space. I adjusted margins, padding, and width but could not remedy this. Sizes larger than 2100px width will  begin to have broken profile picture placement.
 
 ### Useful resources
 
