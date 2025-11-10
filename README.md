@@ -119,6 +119,8 @@ I like how this project turned out but I would like to go back one day and impro
 
 - [MDN blur()](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/blur) - I wanted to autosave on unfocus and found this document about blur() which perfectly met my needs of how I wanted to save usernames.
 
+- [MDN filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) - I really wanted to have a functional filtering bar. I took some time to reread and test code to better understand this array method. I finally got it working as expected and I'm excited that it did!
+
 ## Author
 
 - LinkedIn - [Amanda Ogletree](https://www.linkedin.com/in/amanda-ogletree-a61b60168)

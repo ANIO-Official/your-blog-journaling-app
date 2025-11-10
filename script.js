@@ -4,6 +4,10 @@ let feedBatch = document.getElementById('feed-batch')
 let blogItemTemplate = document.querySelector('.blog-item-template')
 let feedData = []
 
+//Filter
+const filterSearchInput = document.querySelector('#filter-search')
+const filterBtn = document.querySelector('#filterBtn')
+
 //Update/Edit Modal & Form
 const updateModal = document.getElementById('update-modal')
 const updateBlogForm = document.querySelector('#update-blog-form')
@@ -23,7 +27,62 @@ let usernameInput = document.getElementById('usernameInput')
 //Errors
 const blogTitleError = document.querySelector('#title-error')
 const blogContentError = document.querySelector('#content-error')
+//------------------------------------------------------------------------------------------------------
 
+//Filter Items----------------------------------
+
+//Filter on Click
+filterBtn.addEventListener('click', () => {
+    parseFeedData() //Parse stored data
+    const query = filterSearchInput.value //Set query to filter search input value.
+    console.log(`Searching for ${query}`) //check
+
+    function querySearch(array, query) {
+        //Search & return items in array matching the query
+        return array.filter((el) => el.title.toLowerCase().includes(query.toLowerCase()) || el.content.toLowerCase().includes(query.toLowerCase()))
+    }
+    //Filter by query
+    const filteredBlogs = querySearch(feedData, query) //send array of results to variable.
+    filteredFragment(filteredBlogs) //render all filtered items array
+    console.log(`Showing filtered Results: ${filteredBlogs}`)//check
+
+})
+//Remove Filter on Empty and Unfocus
+filterSearchInput.addEventListener('blur', ()=>{
+    if(filterSearchInput.value === ""){
+        parseFeedData() //parse stored data
+        createFragment() //render document fragment of stored data
+        console.log('Returning unfiltered feed.')
+    }
+})
+
+//Render filtered stored data. Takes parameter of the filtered Array.
+function filteredFragment(filteredContent) {
+    //Create Fragment for batch--------------------------
+    const fragment = document.createDocumentFragment()
+
+
+    //Add Array to Fragment--------------------------
+    for (let blog of filteredContent) {
+        //Blog item Display variables
+        const blogItem = blogItemTemplate.cloneNode(true)
+        const blogTitle = blogItem.querySelector('.blog-item-title')//Get title display
+        const blogContent = blogItem.querySelector('.blog-item-content') //Get content display
+
+        //Display Setup--------------------------
+        blogItem.style.display = 'block'
+        blogItem.classList.remove('blog-item-template')//Remove template class.
+        blogItem.classList.add('blog-item') //New class to differentiate from template
+        blogTitle.textContent = blog.title //Set title display
+        blogContent.textContent = blog.content  // Set content display
+
+        fragment.appendChild(blogItem)
+    }
+
+    //Attach document fragment to feedBatch <ul>--------------------------
+    feedBatch.innerHTML = '' //Clear feedBatch of any loaded data before showing new data
+    feedBatch.appendChild(fragment)
+}
 
 //Blog Form Field Validity Checks----------------------------------
 blogTitleInput.addEventListener('input', (event) => {
@@ -61,7 +120,7 @@ feedBatch.addEventListener('click', (event) => {
         const blogItem = event.target.closest('li')
         const blogTitle = blogItem.querySelector('.blog-item-title')//Get title display
         const blogContent = blogItem.querySelector('.blog-item-content') //Get content display
-        
+
         //Show & Populate Edit Modal-----------
         updateModal.style.display = 'block' //show modal  
         updateTitleInput.value = blogTitle.textContent
@@ -105,7 +164,7 @@ feedBatch.addEventListener('click', (event) => {
         })
 
         //Cancel Update
-        cancelModal.addEventListener('click', ()=>{
+        cancelModal.addEventListener('click', () => {
             updateModal.style.display = 'none'
             updateBlogForm.reset()
         })
@@ -256,7 +315,7 @@ function getFeed() {
 }
 
 //Save Username
-usernameInput.addEventListener('blur', ()=>{
+usernameInput.addEventListener('blur', () => {
     localStorage.setItem('username', usernameInput.value)
     console.log(`Saved username: ${usernameInput.value}`)
 })
