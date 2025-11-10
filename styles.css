@@ -2,6 +2,7 @@
 :root {
     /*Basics*/
     --warning-color: linear-gradient(rgb(173, 0, 0), rgb(207, 53, 99));
+    --warning-bold: rgb(179, 0, 0);
     --your-blog-black: #141414;
     --your-blog-gray: #635a5a;
     --your-blog-grayAlpha: #635a5a49;
@@ -33,11 +34,19 @@ label {
 }
 
 input:focus,
-textarea:focus{
+textarea:focus {
     background-color: var(--your-blog-lightpink);
-    border: 1rem thick red;
 }
 
+input:user-invalid,
+textarea:user-invalid {
+    outline: 3px dashed var(--warning-bold)
+}
+
+input:user-valid,
+textarea:user-valid {
+    outline: 3px solid var(--your-blog-pink);
+}
 
 /*Errors Styling*/
 .input-error {
@@ -117,12 +126,13 @@ main h2 {
     margin-left: 2vw;
     color: var(--your-blog-black);
 }
-#usernameInput{
+
+#usernameInput {
     width: fit-content;
     border: none;
 }
 
-#user-about{
+#user-about {
     width: 80%;
     border-radius: 20px;
     border: none;
@@ -162,13 +172,15 @@ textarea {
     border-radius: 50px 50px 0 0;
     border: none;
 }
+
 #create-blog-title,
-#create-blog-content{
+#create-blog-content {
     border-radius: 10px;
     padding: 0.5vw 1vw;
 }
-#create-blogBtn{
-    background: linear-gradient(var(--your-blog-lightpink), var(--your-blog-pink), var(--your-blog-yellow) );
+
+#create-blogBtn {
+    background: linear-gradient(var(--your-blog-lightpink), var(--your-blog-pink), var(--your-blog-yellow));
     color: var(--your-blog-black);
     border: none;
     font-size: 1.25rem;
@@ -176,8 +188,9 @@ textarea {
     border-radius: var(--border-roundy-50);
     filter: drop-shadow(0.2vw 0.2vw var(--your-blog-black));
 }
+
 #create-blogBtn:focus,
-#create-blogBtn:hover{
+#create-blogBtn:hover {
     background: linear-gradient(var(--your-blog-pink), var(--your-blog-yellow));
     color: white;
     filter: drop-shadow(0.2vw 0.2vw var(--your-blog-purple));
@@ -215,7 +228,7 @@ p {
     /* Purple w/ opacity */
 }
 
-#update-blog-form{
+#update-blog-form {
     background-color: var(--your-blog-yellow);
     color: var(--your-blog-black);
     margin: auto;
@@ -305,7 +318,7 @@ p {
         padding-left: 1vw;
     }
 
-    #main-left{
+    #main-left {
         margin: 0;
         padding: 0;
         width: 100%;
@@ -354,6 +367,7 @@ p {
     #main-left {
         padding-left: 3vw;
     }
+
     #user-bg {
         height: 30vw;
         background-color: var(--your-blog-black);
@@ -365,11 +379,11 @@ p {
     }
 
     #update-blog-form h2,
-    #update-blog-form label{
-    font-size: 24px;
+    #update-blog-form label {
+        font-size: 24px;
     }
-    
-    
+
+
     .blog-item-top-container {
         margin-left: -4vw;
         padding-left: 1vw;
